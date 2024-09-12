@@ -28,17 +28,14 @@ export default class OtpVerificationScreen extends Component {
     let newOtp = [...this.state.otp];
     newOtp[index] = text;
     this.setState({ otp: newOtp, showError: false }, () => {
-      // Automatically move focus to the next input field if the current input is complete
       if (text.length === 1 && index < 5) {
         this[`textInput${index + 1}`].focus();
       }
 
-      // Move focus to the previous input field if backspace is pressed
       if (text === "" && index > 0) {
         this[`textInput${index - 1}`].focus();
       }
 
-      // Enable or disable the login button based on OTP length
       if (newOtp.join("").length === 6) {
         this.setState({ isButtonDisabled: false });
       } else {
@@ -63,7 +60,9 @@ export default class OtpVerificationScreen extends Component {
 
     return (
       <View style={styles.outsideContainer}>
+
         <View style={styles.container}>
+          
           <Text style={[styles.code, showError && styles.errorCode]}>{text.securityText}</Text>
 
           {showError && (
@@ -86,21 +85,17 @@ export default class OtpVerificationScreen extends Component {
             ))}
           </View>
 
-          <TouchableOpacity
-            style={styles.resend}
-            onPress={() => console.log("Resend OTP pressed")}
-          >
+          <TouchableOpacity style={styles.resend} onPress={() => console.log("Resend OTP pressed")}>
             <Text style={styles.resendOtp}>{text.resendOtp}</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity
-            style={[styles.verify, isButtonDisabled && styles.disabledButton]}
-            onPress={this.handleLogin}
-            disabled={isButtonDisabled}
-          >
+          <TouchableOpacity style={[styles.verify, isButtonDisabled && styles.disabledButton]}
+            onPress={this.handleLogin} disabled={isButtonDisabled}>
             <Text style={styles.verifyInside}>Verify</Text>
           </TouchableOpacity>
+
         </View>
+
       </View>
     );
   }
@@ -123,7 +118,6 @@ const styles = StyleSheet.create({
     width: width * (250 / 393),
     fontWeight: "700",
     fontSize: 16,
-    lineHeight: 18,
     color: "#333333",
     marginBottom: height * (28 / 777)
   },

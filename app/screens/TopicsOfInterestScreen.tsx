@@ -129,13 +129,6 @@ const styles = StyleSheet.create({
     flex : 1,
     backgroundColor : '#f5f5f5',
   },
-  container: {
-    height: height * (335 / 777),
-    width: width * (353 / 393),
-    top: height * (192  / 777),
-    left: width * (20 / 393),
-    backgroundColor: "#f5f5f5",
-  },
   header: {
     width : width*(353/393),
     height : height*(34/777),
@@ -143,58 +136,56 @@ const styles = StyleSheet.create({
     left : width*(27/393),
     flexDirection: "row",
     justifyContent: "space-between",
-    // paddingHorizontal : 20,
-    // position: 'relative'
-    // alignItems: "center",
-    // marginBottom: 20,
   },
   backButton: {
-    height : 24,
-    width : 24,
+    height : height*(24/777),
+    width : width*(24/777),
   },
   pageIndicator: {
-    // position: 'absolute',  // Absolute position to center it
-    // left: width / 2 - 15, 
+    position: 'absolute',  // Absolute position to center it
+    left: width / 2 - 40, 
     height : height*(19/777),
     width : width*(27/293),
     fontSize: 16,
     color: "#5B5B5B",
     fontWeight : '400',
-    lineHeight : 19.36,
-    alignContent : 'center',
-    alignItems : 'center',
-    justifyContent : 'center',
   },
   skipButton: {
     fontSize: 16,
     color: "#5B5B5B",
     fontWeight : '400',
-    paddingHorizontal : 10,
+    paddingHorizontal : width*(10/393),
+  },
+  container: {
+    height: height * (335 / 777),
+    width: width * (353 / 393),
+    top: height * (192  / 777),
+    left: width * (20 / 393),
+    backgroundColor: "#f5f5f5",
   },
   title: {
     fontSize: 20,
     fontWeight: "700",
-    marginBottom: 20,
+    marginBottom: height*(20/777),
   },
   buttonContainer: {
     flexDirection: "row",
     flexWrap: "wrap",
     justifyContent: "space-between",
-    marginBottom: 20,
+    marginBottom: height*(20/777),
   },
   industryButton: {
     height : height*(34/777),
     width : width*(109/393),
     backgroundColor: "#D3D3D3",
     borderRadius: 38,
-    padding: 8,
-    marginVertical: 5,
+    padding: width*(8/393),
+    marginVertical: height*(5/777),
     alignItems: "center",
     color : 'red',
   },
   selectedButton: {
     backgroundColor: "#008080",
-    // color : 'white',
   },
   selectedButtonTxt :{
     color : '#f5f5f5'
@@ -217,7 +208,6 @@ const styles = StyleSheet.create({
     color: "#f5f5f5",
     fontWeight: "700",
     fontSize: 16,
-    // lineHeight: 19.36,
   },
 });
 

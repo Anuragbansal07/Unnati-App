@@ -1,11 +1,4 @@
-import {
-  Text,
-  StyleSheet,
-  View,
-  Dimensions,
-  TouchableOpacity,
-  Image
-} from "react-native";
+import {Text,StyleSheet,View,Dimensions,TouchableOpacity,Image} from "react-native";
 import React, { Component } from "react";
 const { width, height } = Dimensions.get("window");
 
@@ -54,14 +47,12 @@ export default class WhoAreYouScreen extends Component {
     const { navigation } = this.props;
     const { language } = this.props.route.params;
     const text = language === 'hi' ? {
-      // skip : "छोडना",
       describeText : "Aap kis shreni/category mein aate hain?",
       business : "Businessman(व्यवसायी)",
       jobSeeker : "नौकरी खोजने वाले",
       investor : "ननवेशक/investor",
       other : 'अन्य',
     } : {
-      // skip : "Skip",
       describeText : "What describes you?",
       business : "Business Ownwer",
       jobSeeker : "Job Seeker",
@@ -70,53 +61,54 @@ export default class WhoAreYouScreen extends Component {
     };
     return (
       <View style={styles.outsideContainer}>
-          <View style={styles.header}>
+        
+        <View style={styles.header}>
+          
           <TouchableOpacity onPress={() => navigation.goBack()}>
             <Image source={require('../../assets/images/Expand_left.png')} style={styles.backButton}/>
           </TouchableOpacity>
+          
           <Text style={styles.pageIndicator}>2/3</Text>
+          
           <TouchableOpacity onPress={this.handleSkip}>
             <Text style={styles.skipButton}>Skip</Text>
           </TouchableOpacity>
+        
         </View>
+        
         <View style={styles.container}>
+          
           <Text style={styles.describe}>{text.describeText}</Text>
-          <TouchableOpacity
-            style={styles.categoryContainer}
-            onPress={this.handleBusinessOwner}
-          >
+          
+          <TouchableOpacity style={styles.categoryContainer} onPress={this.handleBusinessOwner}> 
             <View style={styles.continueContainer}>
               <Text style={styles.continueInside}>{text.business}</Text>
             </View>
           </TouchableOpacity>
-          <TouchableOpacity
-            style={styles.categoryContainer}
-            onPress={this.handleJobSeeker}
-          >
+
+          <TouchableOpacity style={styles.categoryContainer} onPress={this.handleJobSeeker}>
             <View style={styles.continueContainer}>
               <Text style={styles.continueInside}>{text.jobSeeker}</Text>
-              {/* <Icon name="arrow-right" size={17} color="#fff" style={styles.icon} /> */}
             </View>
           </TouchableOpacity>
-          <TouchableOpacity
-            style={styles.categoryContainer}
-            onPress={this.handleInvestor}
-          >
+
+          <TouchableOpacity style={styles.categoryContainer} onPress={this.handleInvestor}>
             <View style={styles.continueContainer}>
               <Text style={styles.continueInside}>{text.investor} </Text>
-              {/* <Icon name="arrow-right" size={17} color="#fff" style={styles.icon} /> */}
             </View>
           </TouchableOpacity>
+          
           <TouchableOpacity
             style={styles.categoryContainer}
             onPress={this.handleOthers}
           >
             <View style={styles.continueContainer}>
               <Text style={styles.continueInside}>{text.other} </Text>
-              {/* <Icon name="arrow-right" size={17} color="#fff" style={styles.icon} /> */}
             </View>
           </TouchableOpacity>
+
         </View>
+
       </View>
     );
   }
@@ -134,27 +126,19 @@ const styles = StyleSheet.create({
     left : width*(20/393),
     flexDirection: "row",
     justifyContent: "space-between",
-    // paddingHorizontal : 20,
-    // position: 'relative'
-    // alignItems: "center",
-    // marginBottom: 20,
   },
   backButton: {
-    height : 24,
-    width : 24,
+    height : height*(24/777),
+    width : width*(24/777),
   },
   pageIndicator: {
-    position: 'absolute',  // Absolute position to center it
+    position: 'absolute',
     left: width / 2 - 30, 
     height : height*(19/777),
     width : width*(27/293),
     fontSize: 16,
     color: "#5B5B5B",
     fontWeight : '400',
-    lineHeight : 19.36,
-    alignContent : 'center',
-    alignItems : 'center',
-    justifyContent : 'center',
   },
   skipButton: {
     fontSize: 16,
@@ -170,24 +154,19 @@ const styles = StyleSheet.create({
     backgroundColor: "#f5f5f5",
   },
   categoryContainer: {
-    marginTop: 15,
+    marginTop: height*(15/777),
     alignItems: "center",
     justifyContent: "center",
     height: height * (35 / 777),
     width: width * (310 / 393),
-    // top : height * (150 / 777),
-    // left : width * (24 / 393),
     backgroundColor: "#003366",
-    // borderWidth: 5,
     borderColor : '#003366',
     borderRadius: 8,
-    paddingHorizontal: 8,
-    // paddingVertical : 88,
+    paddingHorizontal: width*(8/393),
   },
   continueInside: {
     fontWeight: "500",
     fontSize: 16,
-    // lineHeight: 19.36,
     color: "#f5f5f5",
   },
   continueContainer: {

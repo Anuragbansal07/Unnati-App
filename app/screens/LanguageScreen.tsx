@@ -68,11 +68,9 @@ export default class LanguageScreen extends Component {
             />
 
             <View style={{ marginTop: this.state.open ? 110 : 40 }}>
-              <TouchableOpacity style={styles.continue} onPress={this.handleContinue}>
-                <View style={styles.continueContainer}>
+              <TouchableOpacity style={styles.continueContainer} onPress={this.handleContinue}>
                   <Text style={styles.continueInside}>Continue </Text>
                   <Image source={require('../../assets/images/Arrow_right.png')} style={styles.image}/>
-                </View>
               </TouchableOpacity>
             </View>
           </View>
@@ -91,19 +89,19 @@ const styles = StyleSheet.create({
     width: width * (350 / 393),
     left: width * (21 / 393),
     height : height*(189/777),
-    top : height * (296/777),
+    top : height * (350/777),
     backgroundColor: '#f5f5f5',
   },
   language1: {
     fontWeight: '400',
     fontSize: 20,
-    lineHeight: 26.6,
+    color : '#333'
   },
   language2: {
-    fontWeight: 'bold',
+    fontWeight: '600',
     fontSize: 20,
-    lineHeight: 24.2,
-    marginBottom: 20,
+    color : '#333',
+    marginBottom: height*(32/777),
   },
   dropdown: {
     height: height * (44 / 777),
@@ -122,31 +120,21 @@ const styles = StyleSheet.create({
   placeholderStyle : {
     fontSize : 14,
     fontWeight : '600',
-    lineHeight : 16.94,
     color : '#474747'
   },
   labelStyle: {
     color: '#333',
     height : height * (19/777),
-    width : width * (316/393),      // Text color for dropdown values
-    fontSize: 14,       // Font size for dropdown values
+    width : width * (316/393),    
+    fontSize: 14,       
     fontWeight: '400',
-    // fontFamily : "Inter",
-    lineHeight : 18.62, // Font weight for dropdown values
-    // paddingHorizontal: 10,  // Padding inside each dropdown item
   },
-  continue: {
-    // alignItems: 'center',
-    // justifyContent: 'center',
-    // paddingTop : 0,
+  continueContainer : {
     height: height * (40 / 777),
     width: width * (350 / 393),
     backgroundColor: '#003366',
     borderWidth: 1,
     borderRadius: 8,
-  },
-  continueContainer : {
-    flex : 1,
     flexDirection : 'row',
     alignItems : 'center',
     justifyContent : 'center',
@@ -154,12 +142,11 @@ const styles = StyleSheet.create({
   continueInside: {
     fontWeight: '700',
     fontSize: 16,
-    lineHeight: 19.36,
     color: '#f5f5f5',
   },
   image : {
-    width : 24,
-    height : 24,
+    width : width*(24/393),
+    height : width*(24/393),
   },
 
 });

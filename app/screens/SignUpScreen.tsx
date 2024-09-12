@@ -2,7 +2,6 @@ import { Text, StyleSheet, View, Dimensions, TextInput } from "react-native";
 import React, { Component } from "react";
 import { GestureHandlerRootView, TouchableOpacity } from "react-native-gesture-handler";
 import Checkbox from 'expo-checkbox';
-import auth from '@react-native-firebase/auth';
 
 const { width, height } = Dimensions.get("window");
 
@@ -16,7 +15,6 @@ export default class SignUpScreen extends Component {
     };
   }
 
-  // Method to check if the "Send OTP" button should be enabled
   isButtonDisabled = () => {
     const { username, phoneNumber, isChecked } = this.state;
     return username.trim() === "" || phoneNumber.trim() === "" || !isChecked;
@@ -32,21 +30,17 @@ export default class SignUpScreen extends Component {
     }
 
     try {
-      // const confirmation = await auth().signInWithPhoneNumber(phoneNumber);
       this.props.navigation.navigate('OtpVerificationScreen',{language});
-      console.log('OTP sent to:', phoneNumber);
     } catch (error) {
       console.error('Error sending OTP:', error);
     }
   };
 
   handleTermsConditions = () => {
-    // Handle the terms and conditions action here
     console.log('Terms and conditions pressed');
   };
 
   handlePrivacyPolicy = () => {
-    // Handle the privacy policy action here
     console.log('View privacy policy');
   };
 
@@ -56,10 +50,10 @@ export default class SignUpScreen extends Component {
       username: "नाम",
       phoneNumber: "फोन नंबर",
       otp: "OTP भेजें",
-      terms: "नियम और शर्तें",
-      privacy: "गोपनीयता नीति से सहमत हैं।",
-      and: "और",
-      clicking: "चेकबॉक्स आइकन पर क्लिक करके आप हमारे",
+      terms: "",
+      privacy: "",
+      and: "",
+      clicking: "Terms and conditions मान्य करें |"
     } : {
       username: "Username",
       phoneNumber: "Phone number",
@@ -72,27 +66,23 @@ export default class SignUpScreen extends Component {
 
     return (
       <GestureHandlerRootView style={{ flex: 1 }}>
+        
         <View style={styles.container}>
+          
           <View style={styles.inputContainer}>
             <Text style={styles.label}>{text.username}</Text>
-            <TextInput
-              style={styles.textInput}
-              value={this.state.username}
-              onChangeText={(text) => this.setState({ username: text })}
-            />
+            <TextInput style={styles.textInput} value={this.state.username} 
+              onChangeText={(text) => this.setState({ username: text })} />
           </View>
 
           <View style={styles.inputContainer}>
             <Text style={styles.label}>{text.phoneNumber}</Text>
-            <TextInput
-              style={styles.textInput}
-              keyboardType="phone-pad"
-              value={this.state.phoneNumber}
-              onChangeText={(text) => this.setState({ phoneNumber: text })}
-            />
+            <TextInput style={styles.textInput} keyboardType="phone-pad" value={this.state.phoneNumber}
+              onChangeText={(text) => this.setState({ phoneNumber: text })} />
           </View>
 
           <View style={styles.checkboxContainer}>
+            
             <Checkbox
               value={this.state.isChecked}
               onValueChange={(newValue) => this.setState({ isChecked: newValue })}
@@ -137,27 +127,32 @@ const styles = StyleSheet.create({
     borderRadius: 9,
     borderColor: "#474747",
     borderWidth: 1,
-    paddingHorizontal: 10,
-    marginBottom: 18,
+    paddingHorizontal: width*(10/393),
+    marginBottom: height*(16/777),
   },
   label: {
     fontSize: 13,
     color: "#000",
-    marginTop: 5,
+    marginTop: height*(5/777),
   },
   textInput: {
-    marginTop: 5,
     backgroundColor: "#f3f1f1",
     borderRadius: 5,
-    marginBottom: 8,
     fontSize: 16,
-    lineHeight: 18,
   },
   checkboxContainer: {
     flexDirection: 'row',
     flexWrap: 'wrap',
     height: height * (28 / 777),
     width: width * (351 / 393),
+  },
+  checkbox: {
+    marginRight: width*(6/393),
+    alignSelf: 'center',
+    height: height*(14/777),
+    width: width*(13/393),
+    borderRadius: 2,
+    borderWidth: 0.5,
   },
   checkboxText: {
     fontSize: 12,
@@ -171,16 +166,8 @@ const styles = StyleSheet.create({
     color: '#008080',
     fontSize: 12,
   },
-  checkbox: {
-    marginRight: 8,
-    alignSelf: 'center',
-    height: 14,
-    width: 13,
-    borderRadius: 2,
-    borderWidth: 0.5,
-  },
   otp: {
-    marginTop: 40,
+    marginTop: height*(36/777),
     alignItems: 'center',
     justifyContent: 'center',
     height: height * (35 / 777),
@@ -190,7 +177,7 @@ const styles = StyleSheet.create({
     borderRadius: 9,
   },
   otplabel: {
-    fontWeight: 'bold',
+    fontWeight: '700',
     fontSize: 16,
     color: '#f5f5f5',
   },
