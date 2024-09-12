@@ -16,7 +16,6 @@ const Stack = createStackNavigator();
 
 export default function Index() {
   return (
-    // <NavigationContainer>
       <Stack.Navigator initialRouteName='LanguageScreen'>
         <Stack.Screen name="Language" component={LanguageScreen} options={{headerShown:false}} />
         <Stack.Screen name="SignUpScreen" component={SignUpScreen} options={{headerShown:false}} />
@@ -31,7 +30,6 @@ export default function Index() {
 
 
       </Stack.Navigator>
-    // </NavigationContainer>
   );
 }
 
